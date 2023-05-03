@@ -1,0 +1,5 @@
+export { default as Correlative} from "./correlative"
+export { default as Home} from "./home"
+export { default as LinksFacu } from "./links-facu"
+export { default as LinksInstagram } from "./links-instagram"
+export { default as Period } from "./period"
