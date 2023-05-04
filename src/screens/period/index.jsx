@@ -1,11 +1,15 @@
-import styles from "./styles"
+import { Text, View } from "react-native";
+import styles from "./styles";
 
-const Period = () => {
+const Period = ({ route }) => {
+  const id = route.params;
+  console.warn(id);
+
   return (
-    <div>
-      <h1>period</h1>
-    </div>
-  )
-}
+    <View>
+      <Text>period</Text>
+    </View>
+  );
+};
 
-export default Period
+export default Period;

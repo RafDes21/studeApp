@@ -1,12 +1,8 @@
-import { Text, View } from "react-native";
 import { styles } from "./styles";
+import AppNavigator from "./navigation";
 
 const App = () => {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+  return <AppNavigator />;
 };
 
 export default App;

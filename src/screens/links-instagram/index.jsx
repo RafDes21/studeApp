@@ -1,10 +1,11 @@
+import { Text, View } from "react-native"
 import styles from "./styles"
 
 const LinksInstagram = () => {
   return (
-    <div>
-      <h1>links instagram</h1>
-    </div>
+    <View>
+      <Text>links instagram</Text>
+    </View>
   )
 }
 

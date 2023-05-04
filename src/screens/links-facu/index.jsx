@@ -1,10 +1,11 @@
+import { View, Text } from "react-native"
 import { styles } from "./styles"
 
 const LinksFacu = () => {
   return (
-    <div>
-      <h1>listFacult</h1>
-    </div>
+    <View>
+      <Text>listFacult</Text>
+    </View>
   )
 }
 
