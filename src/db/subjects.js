@@ -1,4 +1,4 @@
-export const subjects = [
+export const SUBJECTS = [
     {
         id:1,
         subjects:["Matemáticas", "Química", "ICSE"]

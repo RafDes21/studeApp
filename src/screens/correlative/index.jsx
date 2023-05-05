@@ -1,11 +1,16 @@
-import { styles } from "./styles"
+import { Text, View } from "react-native";
+import { styles } from "./styles";
 
-const Correlative = () => {
+const Correlative = ({route}) => {
+const {id} = route.params
+
+console.warn(id)
+
   return (
     <View>
-    <Text>correlative</Text>
-  </View>
-  )
-}
+      <Text>correlative</Text>
+    </View>
+  );
+};
 
-export default Correlative
+export default Correlative;
