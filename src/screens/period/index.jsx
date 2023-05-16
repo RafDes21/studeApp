@@ -19,7 +19,7 @@ const Period = ({ navigation, route }) => {
         style={styles.card}
         {...item}
         onChangeSelect={() =>
-          navigation.navigate("Correlative", { id: item.id })
+          navigation.navigate("Correlative", { id: id, itemId: item.id })
         }
       />
     </ContentCard>
