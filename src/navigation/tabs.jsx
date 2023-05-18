@@ -4,6 +4,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import BiochemistryNavigator from "./biochemistry";
 import LinksFacuNavigator from "./linksFacu";
 import LinksInstagramNavigator from "./linksInstagram";
+import { COLORS } from "../constants";
 
 const Tab = createBottomTabNavigator();
 
@@ -13,6 +14,15 @@ const TabsNavigator = () => {
       initialRouteName="Home"
       screenOptions={{
         headerShown: false,
+        headerStatusBarHeight: 0,
+        tabBarStyle: {
+          backgroundColor: COLORS.secondary,
+          paddingBottom:10,
+          paddingTop:5,
+        },
+        tabBarLabelStyle: {
+          color: COLORS.white, 
+        },
       }}
     >
       <Tab.Screen
@@ -23,7 +33,7 @@ const TabsNavigator = () => {
             <Ionicons
               name={focused ? "home" : "home-outline"}
               size={20}
-              color={"#E359C0"}
+              color={COLORS.white}
             />
           ),
         }}
@@ -36,7 +46,7 @@ const TabsNavigator = () => {
             <Ionicons
               name={focused ? "albums" : "albums-outline"}
               size={20}
-              color={"#E359C0"}
+              color={COLORS.white}
             />
           ),
         }}
@@ -49,7 +59,7 @@ const TabsNavigator = () => {
             <Ionicons
               name={focused ? "apps" : "apps-outline"}
               size={20}
-              color={"#E359C0"}
+              color={COLORS.white}
             />
           ),
         }}

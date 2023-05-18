@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
+import { COLORS } from "../../constants";
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#caf0f8",
+    backgroundColor: COLORS.primary,
   },
   listCorrelatives: {
     alignItems: "center",
@@ -44,4 +45,8 @@ export const styles = StyleSheet.create({
   textContainer: {
     alignItems: "center",
   },
+  containerInput:{
+    flexDirection:"row",
+    justifyContent:"space-around"
+  }
 });

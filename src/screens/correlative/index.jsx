@@ -1,10 +1,23 @@
-import { FlatList, Text, View } from "react-native";
+import { FlatList, Text, TextInput, View } from "react-native";
 import { CORRELATIVES } from "../../db/correlatives";
 import { styles } from "./styles";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import InputWithLabel from "../../componets/inputWithLabel";
+import { useState } from "react";
 
 const Correlative = ({ route }) => {
   const { id, itemId } = route.params;
+  const [number1, setNumber1] = useState('');
+  const [number2, setNumber2] = useState('');
+
+  const handleNumber1Change = (text) => {
+    setNumber1(text);
+  };
+
+  const handleNumber2Change = (text) => {
+    setNumber2(text);
+  };
+
   const subject = CORRELATIVES.find((item) => item.id === id);
   const forStudy = subject.correlatives[itemId].study;
   const forYield = subject.correlatives[itemId].yield;
@@ -72,6 +85,18 @@ const Correlative = ({ route }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{name}</Text>
+      <View style={styles.containerInput}>
+        <InputWithLabel
+          label="Nota Final"
+          value={number1}
+          onChangeText={handleNumber1Change}
+        />
+        <InputWithLabel
+          label="Promocionado"
+          value={number2}
+          onChangeText={handleNumber2Change}
+        />
+      </View>
       <Text style={styles.subTitle}>Para Cursar</Text>
       {renderContent()}
       <Text style={styles.subTitle}>Para Rendir</Text>
