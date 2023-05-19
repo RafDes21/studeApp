@@ -7,8 +7,8 @@ import { useState } from "react";
 
 const Correlative = ({ route }) => {
   const { id, itemId } = route.params;
-  const [number1, setNumber1] = useState('');
-  const [number2, setNumber2] = useState('');
+  const [number1, setNumber1] = useState("");
+  const [number2, setNumber2] = useState("");
 
   const handleNumber1Change = (text) => {
     setNumber1(text);
@@ -28,6 +28,7 @@ const Correlative = ({ route }) => {
     id: `${index}`,
     title: subject,
   }));
+  console.log(forStudyArray);
   const forYieldArray = forYield.map((subject, index) => ({
     id: `${index}`,
     title: subject,

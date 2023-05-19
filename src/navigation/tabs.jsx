@@ -14,14 +14,14 @@ const TabsNavigator = () => {
       initialRouteName="Home"
       screenOptions={{
         headerShown: false,
-        headerStatusBarHeight: 0,
         tabBarStyle: {
           backgroundColor: COLORS.secondary,
-          paddingBottom:10,
-          paddingTop:5,
+          paddingBottom: 10,
+          paddingTop: 5,
         },
         tabBarLabelStyle: {
-          color: COLORS.white, 
+          color: COLORS.white,
+      
         },
       }}
     >
@@ -39,7 +39,7 @@ const TabsNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Links-Facu"
+        name="Facu"
         component={LinksFacuNavigator}
         options={{
           tabBarIcon: ({ focused }) => (
@@ -52,7 +52,7 @@ const TabsNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Links-Instagram"
+        name="Instagram"
         component={LinksInstagramNavigator}
         options={{
           tabBarIcon: ({ focused }) => (
@@ -62,6 +62,9 @@ const TabsNavigator = () => {
               color={COLORS.white}
             />
           ),
+          headerStyle: {
+            backgroundColor: COLORS.secondary, // Color de fondo del header
+          },
         }}
       />
     </Tab.Navigator>
