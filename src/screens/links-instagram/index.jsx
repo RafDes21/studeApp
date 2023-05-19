@@ -1,29 +1,17 @@
 import { View, Text, TextInput, FlatList, Button } from "react-native";
 import { styles } from "./styles";
-import { useState } from "react";
 import { COLORS } from "../../constants";
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign } from "@expo/vector-icons";
+import useLinks from "../../hook/useLinks";
 
 const LinksInstagram = () => {
-  const [isButtonEnabled, setIsButtonEnabled] = useState(false);
-  const [linksFacu, setLinksFacu] = useState([]);
-  const [link, setLink] = useState("");
-  const forLinksArray = linksFacu.map((subject, index) => ({
-    id: `${index}`,
-    title: subject,
-  }));
- 
-  const addLinkFacu = () => {
-    if (linksFacu.length === 0) {
-      setLinksFacu([link]);
-      setLink("");
-      setIsButtonEnabled(false);
-    } else {
-      setLinksFacu([...linksFacu, link]);
-      setLink("");
-      setIsButtonEnabled(false);
-    }
-  };
+  const {
+    isButtonEnabled,
+    link,
+    linksArrayWithId,
+    handleAddLink,
+    handleChangeInput,
+  } = useLinks();
 
   const renderItemLinks = ({ item }) => (
     <View style={styles.linkContainer}>
@@ -32,11 +20,6 @@ const LinksInstagram = () => {
     </View>
   );
 
-  const handleChangeInput = (text) => {
-    const isInputFilled = text.trim().length > 0;
-    setIsButtonEnabled(isInputFilled);
-    setLink(text);
-  };
   return (
     <View style={styles.container}>
       <Text style={styles.title}>links Instagram</Text>
@@ -49,17 +32,17 @@ const LinksInstagram = () => {
       <Button
         color={COLORS.textColor}
         title="Guardar"
-        disabled={!isButtonEnabled}
-        onPress={addLinkFacu}
+        disabled={isButtonEnabled}
+        onPress={handleAddLink}
       />
       <FlatList
-         style={styles.flatLitsContainer}
-        data={forLinksArray}
+        style={styles.flatLitsContainer}
+        data={linksArrayWithId}
         renderItem={renderItemLinks}
         keyExtractor={(item) => item.id.toString()}
       />
     </View>
-  )
-}
+  );
+};
 
-export default LinksInstagram
+export default LinksInstagram;

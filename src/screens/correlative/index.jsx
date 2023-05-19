@@ -1,107 +1,54 @@
-import { FlatList, Text, TextInput, View } from "react-native";
-import { CORRELATIVES } from "../../db/correlatives";
+import { Button, Text, View } from "react-native";
 import { styles } from "./styles";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import InputWithLabel from "../../componets/inputWithLabel";
-import { useState } from "react";
+import useGrade from "../../hook/useGrade";
+import { RenderContent } from "../../componets";
+import { getCorrelativeData } from "../../utils/correlativeUtil";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Correlative = ({ route }) => {
   const { id, itemId } = route.params;
-  const [number1, setNumber1] = useState("");
-  const [number2, setNumber2] = useState("");
 
-  const handleNumber1Change = (text) => {
-    setNumber1(text);
-  };
+  const {
+    handleNumber1Change,
+    handleNumber2Change,
+    number1,
+    number2,
+    toggleInput,
+    isInputEnabled,
+  } = useGrade();
 
-  const handleNumber2Change = (text) => {
-    setNumber2(text);
-  };
-
-  const subject = CORRELATIVES.find((item) => item.id === id);
-  const forStudy = subject.correlatives[itemId].study;
-  const forYield = subject.correlatives[itemId].yield;
-
-  const name = subject.subjects[itemId];
-
-  const forStudyArray = forStudy.map((subject, index) => ({
-    id: `${index}`,
-    title: subject,
-  }));
-  console.log(forStudyArray);
-  const forYieldArray = forYield.map((subject, index) => ({
-    id: `${index}`,
-    title: subject,
-  }));
-
-  const renderStudy = ({ item }) => (
-    <View style={styles.itemList}>
-      <Text>{item.title}</Text>
-      <Ionicons name="eyedrop" size={16} color="black" />
-    </View>
-  );
-
-  const renderContent = () => {
-    if (forStudy.length === 0) {
-      return (
-        <View style={styles.textContainer}>
-          <Text style={styles.emptyText}>No tiene correlativa</Text>
-        </View>
-      );
-    } else {
-      return (
-        <View style={styles.listCorrelatives}>
-          <FlatList
-            style={styles.flatList}
-            data={forStudyArray}
-            renderItem={renderStudy}
-            keyExtractor={(item) => item.id}
-          />
-        </View>
-      );
-    }
-  };
-
-  const renderContent2 = () => {
-    if (forYield.length === 0) {
-      return (
-        <View style={styles.textContainer}>
-          <Text style={styles.emptyText}>No tiene correlativa</Text>
-        </View>
-      );
-    } else {
-      return (
-        <View style={styles.listCorrelatives}>
-          <FlatList
-            style={styles.flatList}
-            data={forYieldArray}
-            renderItem={renderStudy}
-            keyExtractor={(item) => item.id}
-          />
-        </View>
-      );
-    }
-  };
+  const { studyWithId, yieldWithId, name } = getCorrelativeData(id, itemId);
 
   return (
     <View style={styles.container}>
+      <MaterialCommunityIcons
+        style={styles.securityIcon}
+        name="security"
+        size={24}
+        color="black"
+        onPress={toggleInput}
+      />
+
       <Text style={styles.title}>{name}</Text>
       <View style={styles.containerInput}>
         <InputWithLabel
           label="Nota Final"
           value={number1}
           onChangeText={handleNumber1Change}
+          editable={isInputEnabled}
         />
         <InputWithLabel
           label="Promocionado"
           value={number2}
           onChangeText={handleNumber2Change}
+          editable={isInputEnabled}
         />
       </View>
       <Text style={styles.subTitle}>Para Cursar</Text>
-      {renderContent()}
+      <RenderContent data={studyWithId} />
       <Text style={styles.subTitle}>Para Rendir</Text>
-      {renderContent2()}
+      <RenderContent data={yieldWithId} />
     </View>
   );
 };

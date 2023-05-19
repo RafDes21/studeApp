@@ -1,4 +1,4 @@
-import { FlatList, Text, View } from "react-native";
+import { FlatList} from "react-native";
 import { semesters } from "../../db/semesters";
 import { styles } from "./styles";
 import { Card, ContentCard } from "../../componets";

@@ -6,21 +6,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.primary,
   },
-  listCorrelatives: {
-    alignItems: "center",
-  },
-  itemList: {
-    flexDirection: "row",
-    justifyContent:"space-between",
-    paddingHorizontal: 20,
-    paddingVertical: 20,
-   
-  },
-  flatList: {
-    width: "80%",
-    backgroundColor: "#fff",
-    borderRadius:5,
-  },
+
   subTitle: {
     fontSize: 18,
     fontWeight: "bold",
@@ -28,25 +14,22 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
     marginTop: 20,
   },
-  emptyText: {
-    backgroundColor: "#fff",
-    paddingVertical: 50,
-    textAlign: "center",
-    fontSize: 16,
-    width: "80%",
-    borderRadius: 8,
-  },
+
   title: {
     fontSize: 24,
     textAlign: "center",
     paddingVertical: 20,
+  },
+
+  containerInput: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+  },
+
+  securityIcon: {
+    alignSelf: "flex-end",
+    marginRight: 20,
+    marginTop: 20,
     
   },
-  textContainer: {
-    alignItems: "center",
-  },
-  containerInput:{
-    flexDirection:"row",
-    justifyContent:"space-around"
-  }
 });

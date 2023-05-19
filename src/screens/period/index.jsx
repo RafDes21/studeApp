@@ -8,7 +8,7 @@ const Period = ({ navigation, route }) => {
 
   const subject = SUBJECTS.find((item) => item.id === id);
   const subjectRender = subject.subjects;
-  const subjectHandleId = subjectRender.map((subject, index) => ({
+  const subjectWhithId = subjectRender.map((subject, index) => ({
     id: `${index}`,
     title: subject,
   }));
@@ -28,7 +28,7 @@ const Period = ({ navigation, route }) => {
   return (
     <FlatList
       style={styles.container}
-      data={subjectHandleId}
+      data={subjectWhithId}
       keyExtractor={(item) => item.id.toString()}
       renderItem={renderSubjects}
     />

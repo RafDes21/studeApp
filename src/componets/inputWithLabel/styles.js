@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { COLORS } from "../../constants";
 
 export const styles = StyleSheet.create({
   container: {
@@ -16,4 +17,8 @@ export const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 8,
   },
+  disabledInput:{
+    opacity: 0.9,
+    color:COLORS.secondary,
+  }
 });
